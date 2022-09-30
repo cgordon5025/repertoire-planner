@@ -54,7 +54,7 @@ async function getCompAPI() {
 
 function listComp(res) {
     for (var i = 0; i < res.length; i++) {
-        var compLi = $('<li></li>')
+        var compLi = $('<option></options')
         compLi.text(res[i].name)
         listCompEl.append(compLi)
     }
