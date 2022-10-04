@@ -14,6 +14,16 @@ var nameContainerEl = $('#nameContainer')
 submitBtn.click(saveInfo)
 var recitalInfoEl = $('#recitalInfo')
 var listCompEl = $('#listofComposers')
+function init(){
+    if (!localStorage.getItem("myRecital")) {
+        var recitalText = '';
+    } else {
+        recitalText = JSON.parse(localStorage.getItem("myRecital"));
+        dateContainerEl.hide();
+        nameContainerEl.hide()
+    }
+    renderInfo()
+}
 function saveInfo() {
     var recitalInfo = {
         nameText: nameThemeInfo.val(),
@@ -23,14 +33,6 @@ function saveInfo() {
     renderInfo()
 }
 function renderInfo() {
-    if (!localStorage.getItem("myRecital")) {
-        var recitalText = '';
-    } else {
-        recitalText = JSON.parse(localStorage.getItem("myRecital"));
-        dateContainerEl.hide();
-        nameContainerEl.hide()
-    }
-
     recitalDetailEl.text(recitalText);
 }
 var apiURL = "https://api.openopus.org/composer/list/pop.json"
